@@ -33,8 +33,8 @@ eureka:
     prefer-ip-address: true
 
 razorpay:
-  key-id: ${RAZORPAY_KEY_ID:rzp_test_key}
-  key-secret: ${RAZORPAY_KEY_SECRET:rzp_test_secret}
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_SWiQFXEnraY8bH}
+  key-secret: ${RAZORPAY_KEY_SECRET:Mv2YHXVzwNAKlWtjZ1ECajsq}
 
 payment:
   currency: INR
