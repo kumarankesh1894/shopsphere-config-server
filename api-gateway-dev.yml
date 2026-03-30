@@ -38,7 +38,7 @@ eureka:
     prefer-ip-address: true
 
 jwt:
-  secret: ${JWT_SECRET:change-me-dev-secret}
+  secret: ${JWT_SECRET:pbIe6IBR1Ed3hkGsrHQ3B7VkngAbzTuc5zVhdz9rEsg}
 
 management:
   zipkin:
