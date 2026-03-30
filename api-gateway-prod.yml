@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://authservice
+          predicates:
+            - Path=/api/auth/**
+        - id: user-service
+          uri: lb://authservice
+          predicates:
+            - Path=/api/users/**
+        - id: admin-service
+          uri: lb://adminservice
+          predicates:
+            - Path=/api/admin/**
+        - id: catalog-service
+          uri: lb://catalogservice
+          predicates:
+            - Path=/api/catalog/**
+        - id: order-service
+          uri: lb://orderservice
+          predicates:
+            - Path=/api/cart/**, /api/checkout/**, /api/orders/**
+        - id: payment-service
+          uri: lb://paymentservice
+          predicates:
+            - Path=/api/payments/internal/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_DEFAULT_ZONE}
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secret: ${JWT_SECRET}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_ENDPOINT}
+
+logging:
+  level:
+    root: WARN
+
