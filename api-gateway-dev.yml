@@ -30,20 +30,11 @@ spring:
           predicates:
             - Path=/api/payments/internal/**
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
+
 
 jwt:
   secret: ${JWT_SECRET:pbIe6IBR1Ed3hkGsrHQ3B7VkngAbzTuc5zVhdz9rEsg}
 
-management:
-  zipkin:
-    tracing:
-      endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
 
 logging:
   level:
