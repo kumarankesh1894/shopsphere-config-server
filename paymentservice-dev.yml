@@ -27,8 +27,8 @@ spring:
 
 
 razorpay:
-  key-id: ${RAZORPAY_KEY_ID:rzp_test_SWiQFXEnraY8bH}
-  key-secret: ${RAZORPAY_KEY_SECRET:Mv2YHXVzwNAKlWtjZ1ECajsq}
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_SjD984jKc0F73X}
+  key-secret: ${RAZORPAY_KEY_SECRET:RjuKcNFQFjWHMNgeFXJ97BJT}
 
 payment:
   currency: INR
