@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 spring:
   cloud:
@@ -9,34 +9,37 @@ spring:
           uri: lb://authservice
           predicates:
             - Path=/api/auth/**
+
         - id: user-service
           uri: lb://authservice
           predicates:
             - Path=/api/users/**
+
         - id: admin-service
           uri: lb://adminservice
           predicates:
             - Path=/api/admin/**
+
         - id: catalog-service
           uri: lb://catalogservice
           predicates:
-            - Path=/api/catalog/**
+            - Path=/api/catalog/**,/api/products/**,/api/categories/**
+
         - id: order-service
           uri: lb://orderservice
           predicates:
-            - Path=/api/cart/**, /api/checkout/**, /api/orders/**
+            - Path=/api/cart/**,/api/checkout/**,/api/orders/**
+
         - id: payment-service
           uri: lb://paymentservice
           predicates:
-            - Path=/api/payments/internal/**
-
-
+            - Path=/api/payments/**,/api/payments/internal/**
 
 jwt:
-  secret: ${JWT_SECRET:pbIe6IBR1Ed3hkGsrHQ3B7VkngAbzTuc5zVhdz9rEsg}
-
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION:86400000}
 
 logging:
   level:
     root: INFO
-
+    org.springframework.cloud.gateway: DEBUG
