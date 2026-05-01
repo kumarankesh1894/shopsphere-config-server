@@ -1,9 +1,10 @@
 server:
-  port: 8761
+  port: ${SERVER_PORT:8761}
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:eurekaserver}
+    prefer-ip-address: false
   client:
     register-with-eureka: false
     fetch-registry: false
@@ -13,7 +14,21 @@ eureka:
     enable-self-preservation: false
     eviction-interval-timer-in-ms: 5000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${MANAGEMENT_ZIPKIN_TRACING_ENDPOINT:http://zipkin:9411/api/v2/spans}
+
 logging:
   level:
     root: INFO
-
